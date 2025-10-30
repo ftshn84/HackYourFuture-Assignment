@@ -1,8 +1,6 @@
 {
-    "version": "0.2",
-    "language": "en",
-    "words": [
-        "Galactica"
-    ],
-    "ignorePaths": []
+  "version": "0.2",
+  "language": "en",
+  "words": ["Galactica"],
+  "ignorePaths": []
 }
