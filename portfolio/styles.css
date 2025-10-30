@@ -7,9 +7,7 @@
 
 :root {
   /* header height used to offset anchor scrolling so sections don't go under the fixed nav */
-  --header-height: 64px;
-}
-
+.hero-inner {
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
@@ -161,7 +159,6 @@ nav ul li a:hover {
   height: 60vh;
   perspective: 1500px;
   cursor: pointer;
-}
 }
 
 .hero-inner {
