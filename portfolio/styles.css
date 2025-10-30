@@ -18,7 +18,7 @@ body {
 
 /* Navigation */
 header {
-  background-color: #2c3e50;
+  background-color: #022e5b;
   padding: 0.5rem 0;
   position: fixed;
   width: 100%;
@@ -26,9 +26,9 @@ header {
   z-index: 1000;
 }
 
-/* ensure content sits below the fixed header */
+/* ensure content sits below the fixed header but remove extra spacing */
 main {
-  padding-top: var(--header-height);
+  padding-top: 0;
 }
 
 nav ul {
@@ -136,41 +136,86 @@ nav ul li a:hover {
 
 /* Hero Section */
 .shadow {
-  /* make a larger background container */
+  /* container slightly larger than hero */
   position: relative;
-  padding: 0; /* no padding so it sticks directly under the nav */
-  background: linear-gradient(
-    180deg,
-    rgba(236, 240, 241, 0.08),
-    rgba(0, 0, 0, 0.02)
-  );
+  width: 98%;
+  max-width: 1100px;
+  min-height: 65vh;
+  margin: 0 auto;
+  padding: 2% 2% 4% 2%; /* more padding at bottom, none at top */
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 46, 91, 0.95),
+    hsla(253, 96%, 41%, 0.36)
+  );
+  margin-top: var(--header-height); /* offset for fixed header */
 }
 
 .hero {
-  /* smaller card-like hero placed on top of .shadow */
+  /* slightly smaller than shadow container */
   position: relative;
-  z-index: 2;
-  width: 90%;
-  max-width: 1100px;
-  height: 60vh; /* reduced height from full viewport */
-  background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
-    url("https://source.unsplash.com/random/1920x1080?technology") center/cover;
+  width: 96%;
+  height: 60vh;
+  perspective: 1500px;
+  cursor: pointer;
+}
+}
+
+.hero-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.hero:hover .hero-inner {
+  transform: rotateY(180deg);
+}
+
+.hero-front,
+.hero-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: white;
-  border-radius: 12px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
+  padding: 2rem;
+}
+
+.hero-front {
+  background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
+    url("https://source.unsplash.com/random/1920x1080?technology") center/cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.hero-back {
+  background: linear-gradient(rgba(2, 46, 91, 0.98), rgba(2, 46, 91, 0.95));
+  transform: rotateY(180deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 .hero-content h1 {
   font-size: 2.6rem; /* slightly smaller headline */
   margin-bottom: 0.8rem;
+}
+
+.hero-back .hero-content {
+  max-width: 600px;
+}
+
+.hero-back .hero-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-top: 1rem;
 }
 
 /* Make sure anchored sections stop below the fixed header */
@@ -265,18 +310,19 @@ footer {
     --header-height: 56px;
   }
   main {
-    padding-top: var(--header-height);
+    padding-top: 0;
   }
 
   .shadow {
-    /* no padding on mobile either to keep it flush with the header */
-    padding: 0;
+    width: 100%;
+    padding: 0 4% 4% 4%; /* no top padding on mobile */
+    margin-top: var(--header-height);
   }
 
   .hero {
-    width: 95%;
+    width: 92%;
     max-width: 700px;
-    height: 45vh; /* smaller height on mobile */
+    height: 45vh;
     border-radius: 10px;
     padding: 1rem;
   }
