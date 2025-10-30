@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* header height used to offset anchor scrolling so sections don't go under the fixed nav */
+  --header-height: 64px;
+}
+
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
@@ -19,6 +24,11 @@ header {
   width: 100%;
   top: 0;
   z-index: 1000;
+}
+
+/* ensure content sits below the fixed header */
+main {
+  padding-top: var(--header-height);
 }
 
 nav ul {
@@ -128,7 +138,7 @@ nav ul li a:hover {
 .shadow {
   /* make a larger background container */
   position: relative;
-  padding: 5rem 0 6rem 0; /* provide space so the hero sits slightly inside */
+  padding: 0; /* no padding so it sticks directly under the nav */
   background: linear-gradient(
     180deg,
     rgba(236, 240, 241, 0.08),
@@ -143,7 +153,7 @@ nav ul li a:hover {
   /* smaller card-like hero placed on top of .shadow */
   position: relative;
   z-index: 2;
-  width: 92%;
+  width: 90%;
   max-width: 1100px;
   height: 60vh; /* reduced height from full viewport */
   background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)),
@@ -161,6 +171,12 @@ nav ul li a:hover {
 .hero-content h1 {
   font-size: 2.6rem; /* slightly smaller headline */
   margin-bottom: 0.8rem;
+}
+
+/* Make sure anchored sections stop below the fixed header */
+section,
+.hero {
+  scroll-margin-top: var(--header-height);
 }
 
 /* Sections */
@@ -244,12 +260,17 @@ footer {
 /* Responsive Design — mobile-first adjustments */
 @media (max-width: 768px) {
   /* ensure content isn't hidden behind the fixed header */
+  /* reduce header height on mobile and update the CSS variable */
+  :root {
+    --header-height: 56px;
+  }
   main {
-    padding-top: 4.5rem;
+    padding-top: var(--header-height);
   }
 
   .shadow {
-    padding: 3rem 0 4rem 0;
+    /* no padding on mobile either to keep it flush with the header */
+    padding: 0;
   }
 
   .hero {

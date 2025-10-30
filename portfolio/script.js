@@ -1,10 +1,21 @@
-// Add smooth scrolling for navigation links
+// Add smooth scrolling for navigation links with header offset
 document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
+    const target = document.querySelector(this.getAttribute("href"));
+    if (!target) return;
     e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
+    // compute header height to offset the scroll so the section isn't hidden under fixed header
+    const header = document.querySelector("header");
+    const headerHeight = header
+      ? Math.ceil(header.getBoundingClientRect().height)
+      : 0;
+    const offset = 8; // small gap below header
+    const top =
+      window.pageYOffset +
+      target.getBoundingClientRect().top -
+      headerHeight -
+      offset;
+    window.scrollTo({ top, behavior: "smooth" });
   });
 });
 
