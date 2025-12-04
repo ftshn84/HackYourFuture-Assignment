@@ -1,0 +1,33 @@
+User (browser / mobile app)
+↓
+Frontend 
+• UI: list of recipes, recipe detail, add/edit forms
+• Sends HTTP requests to backend 
+↓
+Backend 
+• Exposes endpoints: GET /recipes, GET /recipes/:id, POST /recipes, PUT /recipes/:id, DELETE /recipes/:id
+• Validates input
+↓
+Database (Persistent storage)
+• Stores recipe records: {id, title, ingredients, instructions, created_at}
+
+
+
+What I learned:The frontend uses HTTP requests (AJAX) to the backend's REST API. Typical requests:
+
+GET /recipes — fetch all recipes
+
+GET /recipes/:id — fetch detail for a single recipe
+
+POST /recipes — create a new recipe (payload: {title, ingredients, instructions})
+
+PUT /recipes/:id — update an existing recipe
+
+DELETE /recipes/:id — delete a recipe
+
+All payloads and responses are JSON. The backend responds with appropriate HTTP status codes (200, 201, 204, 400, 404, etc.) and JSON bodies.
+200 OK: Successful request, with a JSON body containing the requested resource or data.
+201 Created: Resource successfully created (e.g., after a POST). Often returns the new resource in the JSON body.
+204 No Content: Successful request, but no body is returned (e.g., after a DELETE).
+400 Bad Request: Client error, usually due to invalid input. JSON body often includes error details.
+404 Not Found: Requested resource doesn’t exist. JSON body may include an error message.
