@@ -1,0 +1,85 @@
+Architecture Diagram Explanation
+User (browser / mobile app)
+
+The person using your recipe application.
+
+Interacts through a web or mobile interface.
+
+Frontend UI
+
+The visual interface the user sees (forms, lists, buttons).
+
+Sends and receives HTTP requests to/from the backend.
+
+Backend REST API
+
+Handles all recipe-related operations.
+
+Provides API endpoints:
+
+GET /recipes → fetch all recipes
+
+GET /recipes/:id → fetch specific recipe
+
+POST /recipes → create new recipe
+
+PUT /recipes/:id → update recipe
+
+DELETE /recipes/:id → remove recipe
+
+Validates user input and applies business rules.
+
+Database
+
+Stores recipe data:
+
+-id
+-title
+-ingredient list
+-instructions
+-created_at
+
+Data Flow:
+User → Frontend → Backend → Database and back.
+
+Sequence Diagram Explanation
+A. Creating or Editing a Recipe
+
+User enters recipe details
+Title
+Ingredients
+Time
+Number of servings
+Step-by-step instructions
+Frontend sends these details to the backend via POST or PUT request.
+Backend writes the information into the database.
+Database confirms record is saved successfully.
+Backend returns a success response to frontend.
+Frontend shows “Saved” to user.
+
+B. Searching & Viewing a Recipe
+
+User searches for recipe.
+Frontend asks backend for recipe list: GET /recipes.
+Backend queries database.
+Database returns:
+id
+title
+ingredients
+instructions
+created_at
+
+Frontend displays recipe list (Recipe 1, Recipe 2, Recipe 3).
+
+------User clicks one recipe.
+
+Frontend requests recipe details: GET /recipes/:id.
+
+Backend retrieves details from database and sends to frontend.
+
+Frontend renders full recipe:
+Title
+Ingredients
+Time
+Serving
+Instructions
