@@ -71,7 +71,7 @@ created_at
 
 Frontend displays recipe list (Recipe 1, Recipe 2, Recipe 3).
 
-User clicks one recipe.
+------User clicks one recipe.
 
 Frontend requests recipe details: GET /recipes/:id.
 
