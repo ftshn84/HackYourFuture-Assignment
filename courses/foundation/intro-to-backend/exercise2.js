@@ -1,6 +1,7 @@
 import express from "express";
 import knex from "knex";
 import {
+  getAllUsers,
   getUnconfirmedUsers,
   getGmailUsers,
   get2022Users,
@@ -29,7 +30,7 @@ app.listen(port, () => {
 
 // /all-users responds with all users sorted by ID - this one is already done for you in the example!
 app.get("/all-users", async (req, res) => {
-  const rows = await db.raw(all_users);
+  const rows = await db.raw(getAllUsers());
   res.json(rows);
 });
 
