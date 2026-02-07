@@ -103,6 +103,7 @@ app.get("/", (req, res) => {
 });
 
 
+
 app.post("/users", async (req, res) => {
   console.log('Request body:', req.body);
   const { first_name, last_name, email } = req.body;
@@ -114,4 +115,25 @@ app.post("/users", async (req, res) => {
   const [id] = await db("users").insert({ first_name, last_name, email });
   const newUser = await db("users").where({ id }).first();
   res.status(201).json(newUser);
+});
+
+// Update user by ID
+app.put("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const { first_name, last_name, email } = req.body;
+
+  if (!first_name || !last_name || !email) {
+    return res.status(400).send("Missing required fields");
+  }
+
+  const updated = await db("users")
+    .where({ id })
+    .update({ first_name, last_name, email });
+
+  if (!updated) {
+    return res.status(404).send("User not found");
+  }
+
+  const user = await db("users").where({ id }).first();
+  res.json(user);
 });
