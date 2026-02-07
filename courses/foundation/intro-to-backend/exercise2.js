@@ -1,6 +1,7 @@
 import express from "express";
 import knex from "knex";
 import { user_count } from "./page-content.js";
+import { all_users } from "./repositort.js"
 
 const db = knex({
   client: "sqlite3",
@@ -19,7 +20,7 @@ app.listen(port, () => {
 
 // /all-users responds with all users sorted by ID - this one is already done for you in the example!
 app.get("/all-users", async (req, res) => {
-  const rows = await db.raw("SELECT * FROM users ORDER BY id ASC;");
+  const rows = await db.raw(all_users);
   res.json(rows);
 });
 

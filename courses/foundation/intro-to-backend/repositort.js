@@ -1,0 +1,1 @@
+export const  all_users ="SELECT * FROM users ORDER BY id ASC;"
