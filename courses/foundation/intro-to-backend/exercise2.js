@@ -23,6 +23,7 @@ const db = knex({
 
 const app = express();
 const port = 3000;
+app.use(express.json());
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
@@ -99,4 +100,18 @@ app.get("/outlook-users", async (req, res) => {
 
 app.get("/", (req, res) => {
   res.send(`${user_count}`);
+});
+
+
+app.post("/users", async (req, res) => {
+  console.log('Request body:', req.body);
+  const { first_name, last_name, email } = req.body;
+
+  if (!first_name || !last_name || !email) {
+    return res.status(400).send("Missing required fields");
+  }
+
+  const [id] = await db("users").insert({ first_name, last_name, email });
+  const newUser = await db("users").where({ id }).first();
+  res.status(201).json(newUser);
 });
