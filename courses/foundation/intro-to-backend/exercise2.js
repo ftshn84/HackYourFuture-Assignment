@@ -1,5 +1,6 @@
 import express from "express";
 import knex from "knex";
+import { user_count } from "./page-content.js";
 
 const db = knex({
   client: "sqlite3",
@@ -15,9 +16,6 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello from exercise 2!");
-});
 
 // /all-users responds with all users sorted by ID - this one is already done for you in the example!
 app.get("/all-users", async (req, res) => {
@@ -115,14 +113,5 @@ app.get("/outlook-users", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(`
-    <h1>Total Users</h1>
-    <p id="count">Loading...</p>
-      <script>
-          fetch('/user-count')
-            .then(data => {
-              document.getElementById('count').textContent = data;
-            })
-      </script>
-  `);
+  res.send(`${user_count}`);
 });
