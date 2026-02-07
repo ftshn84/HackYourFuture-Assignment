@@ -1,0 +1,97 @@
+{
+  "info": {
+    "_postman_id": "8f56ab6d-6915-448e-b566-78a9bda9defa",
+    "name": "exercise2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "50815654",
+    "_collection_link": "https://go.postman.co/collection/50815654-8f56ab6d-6915-448e-b566-78a9bda9defa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "new user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"first_name\":   \"John\",\r\n    \"last_name\": \"Doe\",\r\n    \"email\": \"john.doe@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "update user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"first_name\":   \"John1\",\r\n    \"last_name\": \"Doe1\",\r\n    \"email\": \"john1.doe1@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/11",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "users",
+            "11"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete user",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"first_name\":   \"John1\",\r\n    \"last_name\": \"Doe1\",\r\n    \"email\": \"john1.doe1@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/users/11",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "users",
+            "11"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
