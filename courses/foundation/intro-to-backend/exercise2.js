@@ -137,3 +137,13 @@ app.put("/users/:id", async (req, res) => {
   const user = await db("users").where({ id }).first();
   res.json(user);
 });
+
+// Delete user by ID
+app.delete("/users/:id", async (req, res) => {
+  const { id } = req.params;
+  const deleted = await db("users").where({ id }).del();
+  if (!deleted) {
+    return res.status(404).send("User not found");
+  }
+  res.status(204).send();
+});
