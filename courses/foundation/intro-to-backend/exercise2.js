@@ -98,8 +98,13 @@ app.get("/outlook-users", async (req, res) => {
   res.json(rows);
 });
 
-app.get("/", (req, res) => {
-  res.send(`${user_count}`);
+
+// Root route responds with the user count
+app.get("/", async (req, res) => {
+  const rows = await db.raw(getUserCount());
+  // rows is usually an array of objects, get the count from the first row
+  const count = rows[0][Object.keys(rows[0])[0]];
+  res.send(count.toString());
 });
 
 
