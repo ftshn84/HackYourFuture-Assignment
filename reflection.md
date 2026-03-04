@@ -19,3 +19,11 @@ portfolio/
 - In script.js, the project images (project1.jpg, project2.jpg) are referenced but not included in the code or assets. This may cause broken images.
 - The contact form uses alert for feedback, which is fine for a demo, but consider inline feedback for better UX.
 - No form validation beyond required attributes; consider adding more robust validation.
+
+## Lessons Learned from This Task
+
+1. It is important to prepare the project and clearly define its scope before starting to use AI. Having clear requirements that you fully understand is essential.
+
+2. It is important to clearly break down tasks and ask AI to handle them step by step, validating and committing after each, instead of attempting one giant or "big bang" task.
+
+3. AI can generate helpful diagrams to visualize project structure and concepts.
