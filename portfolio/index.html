@@ -98,10 +98,11 @@
         <h2>Contact Me</h2>
         <div class="contact-content">
           <form id="contact-form">
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea placeholder="Your Message" required></textarea>
+            <input type="text" id="name" placeholder="Your Name" required />
+            <input type="email" id="email" placeholder="Your Email" required />
+            <textarea id="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
+            <div id="form-feedback" class="form-feedback" aria-live="polite"></div>
           </form>
         </div>
       </section>
