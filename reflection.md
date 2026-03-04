@@ -13,3 +13,9 @@ portfolio/
 ├── styles.css         # CSS styles
 ├── script.js          # JavaScript logic
 ```
+
+## Improvements made to my code
+
+- In script.js, the project images (project1.jpg, project2.jpg) are referenced but not included in the code or assets. This may cause broken images.
+- The contact form uses alert for feedback, which is fine for a demo, but consider inline feedback for better UX.
+- No form validation beyond required attributes; consider adding more robust validation.
