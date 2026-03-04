@@ -27,3 +27,40 @@ portfolio/
 2. It is important to clearly break down tasks and ask AI to handle them step by step, validating and committing after each, instead of attempting one giant or "big bang" task.
 
 3. AI can generate helpful diagrams to visualize project structure and concepts.
+
+
+## Etical AI usage
+
+### 1. Confidential Code and Data
+
+**What is risk:**
+If I paste company code, API key, or customer data into AI, it can leak private information. This can break company rule and cause big problem.
+
+**How I prevent:**
+I never paste real company code or real user data.
+I change data to fake example before using AI.
+I follow company AI policy.
+
+
+### 2. Security Problems
+
+**What is risk:**
+AI can give code with security bug like SQL injection or no input check. Code look correct but not safe.
+
+**How I prevent:**
+I check all AI code carefully.
+I test it before use.
+I ask senior developer to review if not sure.
+
+
+### 3. Wrong or Fake Information
+
+**What is risk:**
+AI sometimes give wrong code, fake API, or old syntax. It sound confident but maybe wrong.
+
+**How I prevent:**
+I always test code.
+I check official documentation.
+If I don’t understand, I don’t use it.
+
+
