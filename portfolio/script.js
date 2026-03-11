@@ -19,13 +19,33 @@ document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Handle contact form submission
+// Handle contact form submission with inline feedback and validation
 const contactForm = document.getElementById("contact-form");
+const feedback = document.getElementById("form-feedback");
 if (contactForm) {
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
-    // Here you would typically send the form data to a server
-    alert("Thank you for your message! I will get back to you soon.");
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+    // Simple validation
+    if (name.length < 2) {
+      feedback.textContent = "Please enter your name (at least 2 characters).";
+      feedback.className = "form-feedback error";
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      feedback.textContent = "Please enter a valid email address.";
+      feedback.className = "form-feedback error";
+      return;
+    }
+    if (message.length < 10) {
+      feedback.textContent = "Message should be at least 10 characters.";
+      feedback.className = "form-feedback error";
+      return;
+    }
+    feedback.textContent = "Thank you for your message! I will get back to you soon.";
+    feedback.className = "form-feedback success";
     contactForm.reset();
   });
 }
@@ -37,14 +57,14 @@ const projects = [
     description:
       "A React-based space tourism website showcasing destinations and mission details.",
     technologies: ["React", "CSS Modules", "Vite"],
-    image: "project1.jpg",
+    image: "https://source.unsplash.com/400x200/?space,galaxy",
   },
   {
     title: "HYF Bay",
     description:
       "An e-commerce platform built during the HackYourFuture course.",
     technologies: ["JavaScript", "HTML", "CSS"],
-    image: "project2.jpg",
+    image: "https://source.unsplash.com/400x200/?ecommerce,shop",
   },
 ];
 
@@ -57,14 +77,13 @@ function createProjectCards() {
     const card = document.createElement("div");
     card.className = "project-card";
     card.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <div class="technologies">
-                ${project.technologies
-                  .map((tech) => `<span>${tech}</span>`)
-                  .join("")}
-            </div>
-        `;
+      <img src="${project.image}" alt="${project.title} project image" style="width:100%;height:auto;border-radius:8px;margin-bottom:1rem;object-fit:cover;max-height:180px;" />
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <div class="technologies">
+        ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
+      </div>
+    `;
     projectGrid.appendChild(card);
   });
 }
